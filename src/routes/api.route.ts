@@ -114,7 +114,6 @@ router.get(
 router.post(
   "/coaches",
   async (req: Request, res: Response, _next: NextFunction) => {
-    console.log(req.body);
     try {
       const coach = await prisma.coach.create({
         data: req.body,
