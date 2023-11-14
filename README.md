@@ -27,3 +27,6 @@ The app consists of various endpoints to run CRUD operations on courses, coach o
 Look at the routes folder to check all the routes.
 
 rest.http file includes some sample requests to test the app.
+
+
+I have also added db file to support the frontend
