@@ -1,0 +1,27 @@
+GET http://localhost:5001/api/courses
+
+###
+POST http://localhost:5001/api/courses
+Content-Type: application/json
+
+{
+    "name": "Typescript",
+    "description": "Typescript Course",
+    "price": 100
+}
+
+
+###
+GET http://localhost:5001/api/courses/1
+
+###
+GET http://localhost:5001/api/coaches
+
+###
+POST http://localhost:5001/api/coaches
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "johnDoe@gmail.com"
+}
