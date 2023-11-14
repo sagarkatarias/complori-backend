@@ -13,7 +13,7 @@ router.get(
   async (_req: Request, res: Response, next: NextFunction) => {
     try {
       const courses = await prisma.course.findMany({});
-      res.json(courses);
+      res.status(200).json(courses);
     } catch (error) {
       next(error);
     }
@@ -29,7 +29,7 @@ router.get(
           id: parseInt(req.params.id),
         },
       });
-      res.json(courses);
+      res.status(200).json(courses);
     } catch (error) {
       next(error);
     }
@@ -42,7 +42,7 @@ router.post("/courses", async (req: Request, res: Response) => {
       data: req.body,
     });
 
-    res.json(course);
+    res.status(201).json(course);
   } catch (error: unknown) {
     const prismaError = error as Prisma.PrismaClientKnownRequestError;
     const { code, meta } = prismaError;
@@ -64,7 +64,7 @@ router.delete(
           id: parseInt(req.params.id),
         },
       });
-      res.json(course);
+      res.status(204).send();
     } catch (error) {
       next(error);
     }
@@ -79,8 +79,10 @@ router.patch("/courses/:id", async (req: Request, res: Response) => {
       },
       data: req.body,
     });
-    res.json(course);
-  } catch (error) {}
+    res.status(200).json(course);
+  } catch (error) {
+    res.status(500).json({ message: "Error updating course" });
+  }
 });
 
 router.get(
@@ -114,6 +116,7 @@ router.get(
 router.post(
   "/coaches",
   async (req: Request, res: Response, _next: NextFunction) => {
+    console.log(req.body);
     try {
       const coach = await prisma.coach.create({
         data: req.body,
@@ -132,5 +135,11 @@ router.post(
     }
   }
 );
+
+// Error-handling middleware
+router.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  console.error(err);
+  res.status(500).json({ message: "Internal Server Error" });
+});
 
 module.exports = router;
