@@ -20,8 +20,6 @@ router.get(
   }
 );
 
-module.exports = router;
-
 router.get(
   "/courses/:id",
   async (req: Request, res: Response, next: NextFunction) => {
