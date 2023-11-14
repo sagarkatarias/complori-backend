@@ -23,5 +23,7 @@ To generate the Prisma Client code based on your Prisma schema
 To run migrations and update your database schema based on the changes defined in your Prisma schema
 
 The app consists of various endpoints to run CRUD operations on courses, coach or members Tables. The object relations are descriptive in the schema.
-Look at the routes folder to check all the routes
-rest.http file includes some sample requests to test the app
+
+Look at the routes folder to check all the routes.
+
+rest.http file includes some sample requests to test the app.
