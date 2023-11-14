@@ -13,10 +13,6 @@ app.use(morgan("dev"));
 dotenv.config();
 app.use(cors());
 
-/* app.get("/", async (req, res, next) => {
-  res.send({ message: "Awesome it works 🐻" });
-}); */
-
 app.use("/api", require("./routes/api.route"));
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
